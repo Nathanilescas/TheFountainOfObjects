@@ -14,8 +14,18 @@ namespace TheFountainOfObjects.TheFountainOfObjects
             {
                 if (instance == null)
                 {
-                    int numberOfRows = 4;
-                    int numberOfColumns = 4;
+                    Console.Write("Do you want a large, medium, or small map? ");
+                    string answer = Console.ReadLine();
+
+                    int mapSize = (answer.ToUpper()) switch
+                    {
+                        "LARGE" => 8,
+                        "MEDIUM" => 6,
+                        "SMALL" => 4
+                    };
+
+                    int numberOfRows = mapSize;
+                    int numberOfColumns = mapSize;
                     instance = new GridSystem(numberOfRows, numberOfColumns);
                 }
                 return instance;
@@ -24,7 +34,7 @@ namespace TheFountainOfObjects.TheFountainOfObjects
         private GridSystem(int y, int x)
         {
             cavernGrid = new Commands[y, x];
-            cavernGrid[0, 2] = new Fountain();
+            cavernGrid[0, (cavernGrid.GetLength(1) / 2)] = new Fountain();
         }
     }
 }
