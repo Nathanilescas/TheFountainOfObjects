@@ -15,10 +15,9 @@ namespace TheFountainOfObjects.TheFountainOfObjects.GameCommands.MovementCommand
 
         public void RoomCommand()
         {
-
             if (Grid.cavernGrid[Player.LocationRow, Player.LocationColumn] != null)
             {
-                Grid.cavernGrid[Player.LocationRow, Player.LocationColumn].ActivateRoom();
+                Grid.cavernGrid[Player.LocationRow , Player.LocationColumn].ActivateRoom();
             }
             
         }

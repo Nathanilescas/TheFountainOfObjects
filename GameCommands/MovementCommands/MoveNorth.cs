@@ -6,7 +6,7 @@ namespace TheFountainOfObjects.TheFountainOfObjects.GameCommands.MovementCommand
         private int row = 0;
         public override void Move(GridSystem grid, Player player)
         {
-            if (player.LocationRow < grid.cavernGrid.GetLength(row))
+            if (player.LocationRow < grid.cavernGrid.GetLength(row) - 1)
             {
                 player.MoveNorthSouth(true);
             }

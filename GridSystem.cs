@@ -14,8 +14,8 @@ namespace TheFountainOfObjects.TheFountainOfObjects
             {
                 if (instance == null)
                 {
-                    int numberOfRows = 3;
-                    int numberOfColumns = 3;
+                    int numberOfRows = 4;
+                    int numberOfColumns = 4;
                     instance = new GridSystem(numberOfRows, numberOfColumns);
                 }
                 return instance;
