@@ -6,10 +6,10 @@ internal class MoveWest : Commands
     private int column = 1;
     public override void Move(GridSystem grid, Player player)
     {
-        if (player.LocationColumn < grid.cavernGrid.GetLength(column) - 1)
+        if (player.playerPos.Column < grid.cavernGrid.GetLength(column) - 1)
         {
-            player.MoveWestEast(true);
+            player.playerPos.MoveWestEast(true);
         }
-        else { Console.WriteLine("Can not move there!"); }
+        else { StopConsoleColor("You can not move there!!"); }
     }
 }

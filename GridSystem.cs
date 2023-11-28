@@ -1,12 +1,10 @@
-﻿using TheFountainOfObjects.TheFountainOfObjects.GameCommands;
-using TheFountainOfObjects.TheFountainOfObjects.GameCommands.MovementCommands;
-using TheFountainOfObjects.TheFountainOfObjects.GameCommands.RoomCommands;
+﻿using TheFountainOfObjects2.TheFountainOfObjects.GameCommands.RoomCommands;
+using TheFountainOfObjects2.TheFountainOfObjects.GameControls.RoomCommands;
 
 namespace TheFountainOfObjects.TheFountainOfObjects
 {
     internal class GridSystem
     {
-        public readonly Commands[,] cavernGrid;
         private static GridSystem instance;
         public static GridSystem Instance
         {
@@ -15,26 +13,25 @@ namespace TheFountainOfObjects.TheFountainOfObjects
                 if (instance == null)
                 {
                     Console.Write("Do you want a large, medium, or small map? ");
-                    string answer = Console.ReadLine();
-
+                    string answer = Console.ReadLine(); // Put a Throw Exception here!!!!!!!!!!!!
+                    Console.Clear();
                     int mapSize = (answer.ToUpper()) switch
                     {
                         "LARGE" => 8,
                         "MEDIUM" => 6,
                         "SMALL" => 4
                     };
-
-                    int numberOfRows = mapSize;
-                    int numberOfColumns = mapSize;
-                    instance = new GridSystem(numberOfRows, numberOfColumns);
+                    instance = new GridSystem(mapSize, mapSize);
                 }
                 return instance;
             }
         }
-        private GridSystem(int y, int x)
+
+        public readonly IActivate[,] cavernGrid;
+       
+        private GridSystem(int Row, int Col) 
         {
-            cavernGrid = new Commands[y, x];
-            cavernGrid[0, (cavernGrid.GetLength(1) / 2)] = new Fountain();
-        }
+            cavernGrid = new IActivate[Row, Col];            
+        } 
     }
 }

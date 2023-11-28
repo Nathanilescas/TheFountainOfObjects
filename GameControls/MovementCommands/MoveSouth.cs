@@ -5,11 +5,11 @@ namespace TheFountainOfObjects.TheFountainOfObjects.GameCommands.MovementCommand
     {
         public override void Move(GridSystem grid, Player player)
         {
-            if (player.LocationRow > 0)
+            if (player.playerPos.Row > 0)
             {
-                player.MoveNorthSouth(false);
+                player.playerPos.MoveNorthSouth(false);
             }
-            else { Console.WriteLine("Can not move there!"); }
+            else { StopConsoleColor("You can not move there!!"); }
         }
     }
 }
