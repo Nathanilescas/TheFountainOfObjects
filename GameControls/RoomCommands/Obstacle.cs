@@ -69,6 +69,7 @@ namespace TheFountainOfObjects2.TheFountainOfObjects.GameCommands.RoomCommands
             }
         }
 
+
         // This Check the Vertical and horizontal coordinates
         internal void CheckVHPos()
         {
@@ -83,7 +84,12 @@ namespace TheFountainOfObjects2.TheFountainOfObjects.GameCommands.RoomCommands
                 isMatch = (Instance.playerPos.Row == ObstaclePos.Row + 1 || Instance.playerPos.Row == ObstaclePos.Row - 1);
             }
             
-            if (isMatch) { Console.WriteLine($"The {this.ToString()} is near by"); }
+            if (isMatch)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"The {this.ToString()} is near by!!");
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
 
         }
     }

@@ -12,6 +12,7 @@ namespace TheFountainOfObjects.TheFountainOfObjects.GameCommands.MovementCommand
             else
             {
                 StopConsoleColor("You can not move there!!");
+                Thread.Sleep(1000);
             }
         }
     }

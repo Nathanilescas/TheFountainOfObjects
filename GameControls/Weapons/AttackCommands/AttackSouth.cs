@@ -21,10 +21,15 @@ namespace TheFountainOfObjects2.TheFountainOfObjects.GameControls.Weapons.Attack
 
                 if (grid.cavernGrid[position.Row, position.Column] != null)
                 {
+                    Thread.Sleep(1500);
                     StopConsoleColor($"Destroyed {grid.cavernGrid[position.Row, position.Column]}");
                     grid.cavernGrid[position.Row, position.Column] = null;
                 }
-                Console.WriteLine("Missed");
+                else
+                {
+                    Console.WriteLine("\nMissed");
+                    Thread.Sleep(1500);
+                }
             }
         }
     }

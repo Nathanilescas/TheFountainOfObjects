@@ -10,7 +10,7 @@ namespace TheFountainOfObjects.TheFountainOfObjects.GameCommands.MovementCommand
             {
                 player.playerPos.MoveNorthSouth(true);
             }
-            else { StopConsoleColor("You can not move there!!"); }
+            else { StopConsoleColor("You can not move there!!"); Thread.Sleep(1000); }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using TheFountainOfObjects2.TheFountainOfObjects.GameControls.Weapons.AttackCommands;
+using System.Threading;
 
 namespace TheFountainOfObjects.TheFountainOfObjects.GameCommands.MovementCommands
 {
@@ -46,37 +47,62 @@ namespace TheFountainOfObjects.TheFountainOfObjects.GameCommands.MovementCommand
                 "Move: ");
             Console.WriteLine($"({Player.playerPos.Row}, {Player.playerPos.Column})");
             string input = Console.ReadLine();
-
-            // put a try & catch here for the input to make sure that the user inputs one of the options
-            Commands command = input.ToUpper() switch
+            Commands command;
+            try
             {
-                "NORTH" => new MoveNorth(),
-                "SOUTH" => new MoveSouth(),
-                "WEST" => new MoveWest(),
-                "EAST" => new MoveEast()
-            };
+                command = input.ToUpper() switch
+                {
+                    "NORTH" => new MoveNorth(),
+                    "SOUTH" => new MoveSouth(),
+                    "WEST" => new MoveWest(),
+                    "EAST" => new MoveEast(),
+                    _ => throw new InvalidOperationException("\nInvalid Command!!")
+                } ;
+            }catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Thread.Sleep(1500);
+                command = null;
+            }
 
-            command.Move(Grid, Player);
-            Console.WriteLine($"({Player.playerPos.Row}, {Player.playerPos.Column})");
+            if (command != null)
+            {
+                command.Move(Grid, Player);
+                Console.WriteLine($"({Player.playerPos.Row}, {Player.playerPos.Column})");
+            }
 
         }
 
 
         public void ShootArrow()
         {
-            Console.Write("Attack: ");
+            Console.Write("==========================\n" +
+                "Attack: ");
             //// PUT TRY AND CATCH HERE !!!!!!!!!!!!!
             string input = Console.ReadLine();
-
-            Commands command = input.ToUpper() switch
+            Commands command;
+            try
             {
-                "NORTH" => new AttackNorth(),
-                "SOUTH" => new AttackSouth(),
-                "WEST" => new AttackWest(),
-                "EAST" => new AttackEast()
-            };
+                command = input.ToUpper() switch
+                {
+                    "NORTH" => new AttackNorth(),
+                    "SOUTH" => new AttackSouth(),
+                    "WEST" => new AttackWest(),
+                    "EAST" => new AttackEast(),
+                    _ => throw new InvalidOperationException("\nInvalid Command!!")
+                };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Thread.Sleep(1500);
+                command = null;
+            }
 
-            command.Shoot(Grid, Player);
+            if (command != null)
+            {
+                command.Shoot(Grid, Player);
+            }
         }
 
     }

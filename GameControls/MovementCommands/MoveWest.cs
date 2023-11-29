@@ -10,6 +10,6 @@ internal class MoveWest : Commands
         {
             player.playerPos.MoveWestEast(true);
         }
-        else { StopConsoleColor("You can not move there!!"); }
+        else { StopConsoleColor("You can not move there!!"); Thread.Sleep(1000); }
     }
 }
